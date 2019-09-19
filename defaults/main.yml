@@ -1,0 +1,5 @@
+---
+# defaults file for app1
+tenant: Common
+bigip_port: 443
+validate_certs: no

@@ -1,0 +1,16 @@
+---
+
+- name: Check to see if bigip username credential missing
+  fail:
+    msg: "You must provide a 'bigip_username' variable"
+  when: bigip_username is not defined
+
+- name: Check to see if bigip passwrd credential missing
+  fail:
+    msg: "You must provide a 'bigip_password' variable"
+  when: bigip_password is not defined
+
+- name: Check to see if bigip server credential missing
+  fail:
+    msg: "You must provide a 'bigip_server' variable"
+  when: bigip_server is not defined

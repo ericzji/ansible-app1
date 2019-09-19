@@ -1,0 +1,28 @@
+---
+# tasks file for app1
+- import_tasks: setup.yaml
+
+- name: Create tenant partition
+  bigip_partition:
+    name: "{{ tenant }}"
+    user: "{{ bigip_username }}"
+    password: "{{ bigip_password }}"
+    validate_certs: "{{ validate_certs }}"
+    server: "{{ bigip_server }}"
+    server_port: "{{ bigip_port }}"
+  delegate_to: localhost
+
+- name: Create pool
+  bigip_pool:
+    name: "{{ tenant }}-pool1"
+    lb_method: round-robin
+    partition: "{{ tenant }}"
+    user: "{{ bigip_username }}"
+    password: "{{ bigip_password }}"
+    validate_certs: "{{ validate_certs }}"
+    server: "{{ bigip_server }}"
+    server_port: "{{ bigip_port }}"
+  delegate_to: localhost
+
+
+
